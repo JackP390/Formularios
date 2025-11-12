@@ -7,5 +7,19 @@
 </head>
 <body>
   <h1>Lista de personas</h1>
+  <form action="{% url 'personas' %}" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Guardar persona</button>
+  </form>
+
+  {% if personas %}
+  <ul>
+    {% for persona in personas %}
+    <li>{{persona.nombre_p}} {{persona.apellido_p}} {{persona.rut}} {{persona_direccion_p}} {{persona.email_p}} {{persona.edad_p}}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  <button><a href="{% url 'main' %}">Volver a la página principal</a></button>
 </body>
 </html>
